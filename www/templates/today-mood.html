@@ -1,0 +1,22 @@
+<ion-view view-title="MeMote">
+  <ion-content class="padding">
+    <div class="list card">
+      <div class="item item-divider">How would you rate your mood (1-10)?</div>
+      <div class="item item-body">
+        <div class="range">
+          <i class="icon ion-sad-outline"></i>
+          <input type="range" name="mood" ng-model="moodRating">
+          <i class="icon ion-happy-outline"></i>
+        </div>
+
+        <p>Mood Rating: {{moodRating/10}}</p>
+
+      </div>
+    </div>
+
+    <a class="button button-block button-calm" href="#/today/q/1">
+     Next
+    </a>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,88 @@
+4-2-2015 Trie, MeMote, Ryan Kano Talk
+
+How you'd build Polyn:
+  - store a dictionary of words
+    - a list of valid English words
+    - is_valid_word(" ");
+
+Trie:
+  - data structure for string storage
+  - re "trie" val
+  - root, empty string
+  - c node
+
+node
+  leaf: boolean
+  children: [node]
+
+////////////////////
+Angular/Ionic:
+  - update modules/app.js,
+    - then view
+
+- 2 collections
+- states: abstract and sub
+  States
+    stats
+      day
+      week
+      month
+    today
+      mood
+      q:order
+
+- today.q(1)
+- today.q, controller
+  - find out how many q.length
+
+db.questions.insert({title: "What were your wins today?", order: 0});
+db.questions.insert({title: "What did you learn?", order: 1});
+db.questions.insert({title: "What is the most important thing you have to do tomorrow?", order: 2});
+db.questions.insert({title: "What is something new you can do tomorrow?", order: 3});
+db.questions.insert({title: "Who are the most important people in your life?", order: 4});
+db.questions.insert({title: "What was the best thing that happened today? (What were your wins today?)", order: 0});
+db.questions.insert({title: "What could have gone better? (What did you learn?)", order: 1});
+
+///////////////////////
+Ryan Kano
+
+Things I Wish I Knew At 20
+- never let perfect be the enemy of good enough
+  - always show people your junk
+- you are not your code
+- own your career
+  - seek advice from your managers O__O
+- community
+  - participate in it
+  - toastmasters, pt biz schools
+  - present stuff
+- austin, startup bus
+- always have a side project
+- code, code, code
+- zen of python
+- process
+  - stayfocused, pomodoros, etc
+  - timeboxes
+- social engineering
+- do work
+- suggested reading:
+  - clean code: uncle bob martin
+  - refactoring: martin fowler
+  - pragmatic programmer
+  - release it
+  - team geek
+  - jolt awards: annual award
+  - influential cs books
+  - single most influential book every programmer should know
+- get on github projects
+- passion/giving talks/participating in community vs. big-o/algs
+- code reviews depending on team size
+
+- learn 1 language, and from the back very well xD
+- concepts of modeling/problem of data storage vs. the language itself
+- dockr/containerization
+- apache meisos
+- cap theorem
+- paperswelove.org
+- dev ops 3-6 Thursdays
+- 
