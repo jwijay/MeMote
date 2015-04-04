@@ -1,4 +1,4 @@
-angular.module('memote', ['ionic', 'memote.controllers', 'memote.services'])
+angular.module('memote', ['ionic', 'memote.controllers', 'memote.services', 'chartjs-directive'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

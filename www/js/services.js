@@ -1,14 +1,5 @@
 angular.module('memote.services', [])
 
-// .factory('Dayta', function($http) {
-//   return {
-//     create : function() {
-//       $http.post('http://localhost:3000/api/dayta', $)
-//     }
-
-//   }
-// })
-
 .factory('MoodRating', function() {
   var moodRating = 75;
 
@@ -34,7 +25,6 @@ angular.module('memote.services', [])
     }
   };
 })
-
 
 .factory('Dayta', function($http) {
   var daytas = [];

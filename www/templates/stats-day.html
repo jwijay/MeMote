@@ -4,7 +4,15 @@
       <div class="item item-divider">Mood</div>
       <div class="item item-body">
         <div>
-          There is a fire in <b>sector 3</b>
+          <p ng-repeat="dayta in daytas">
+            {{dayta.date}}
+            <br>
+            {{dayta.mood}}
+          </p>
+        </div>
+        <div>
+          <canvas id="moodChart" width="400" height="400"></canvas>
+          <!-- <chartjs width="MoodChart.width" height="MoodChart.height" data="MoodChart.data" options="MoodChart.options" is-type="Doughnut"></chartjs> -->
         </div>
       </div>
     </div>
@@ -13,7 +21,9 @@
       <div class="item item-body">
         <div>
           <p ng-repeat="dayta in daytas">
-            {{dayta}}
+            {{dayta.date}}
+            <br>
+            {{dayta.responses[question.title]}}
           </p>
         </div>
       </div>
