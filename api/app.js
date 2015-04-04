@@ -35,7 +35,7 @@ app.get('/api/questions', function (req, res) {
 });
 
 app.get('/api/dayta', function (req, res) {
-  Dayta.find().sort('-date').exec(function(err, daytas) {
+  Dayta.find().sort('date').exec(function(err, daytas) {
     if (err) throw err;
     console.log(daytas);
 

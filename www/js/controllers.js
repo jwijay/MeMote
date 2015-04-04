@@ -33,23 +33,36 @@ angular.module('memote.controllers', [])
 .controller('DayCtrl', function($scope, Questions, MoodRating, Responses, Dayta) {
   $scope.questions = Questions.all();
 
+  // converting date for labels
+  var dateConverter = function(isoDate) {
+      var date = new Date(isoDate);
+      return (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+  };
+
   Dayta.get().success(function(data) {
     $scope.daytas = data;
     console.log('$scope.daytas',$scope.daytas);
     $scope.moodRatings = $scope.daytas.map(function(dayta) {
       return dayta.mood;
     });
+    $scope.dates = $scope.daytas.map(function(dayta) {
+      return dateConverter(dayta.date);
+    });
 
     console.log('$scope.moodRatings',$scope.moodRatings);
+    // console.log('$scope.dates',$scope.dates);
 
   });
 
-  // adding moon chart
+
+  // adding mood chart
   var ctx = $('#moodChart').get(0).getContext('2d');
 
   // sample data
   var data = {
-      labels: ["January", "February", "March", "April", "May", "June", "July"],
+      // labels: ["January", "February", "March", "April", "May", "June", "July"],
+      labels: ["3/31/2015", "4/1/2015", "4/2/2015", "4/3/2015", "4/4/2015", "4/5/2015", "4/6/2015"],
+      // labels: $scope.dates,
       datasets: [
           // {
           //     label: "My First dataset",
