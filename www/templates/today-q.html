@@ -5,17 +5,17 @@
       <!-- <div class="item item-body"> -->
         <div>
           <label for="" class="item item-input">
-            <textarea placeholder="{{question.placeholder}}"></textarea>
+            <textarea placeholder="{{question.placeholder}}" ng-model="response"></textarea>
           </label>
         </div>
       <!-- </div> -->
     </div>
 
-    <a class="button button-block button-calm" href="#/today/q/{{next_q}}" ng-hide="order == numQuestions">
+    <a class="button button-block button-calm" href="#/today/q/{{next_q}}" ng-hide="order == numQuestions" ng-click="addResponse(response)">
      Next
     </a>
 
-    <a class="button button-block button-calm" href="#/stats/day" ng-show="order == numQuestions">
+    <a class="button button-block button-calm" href="#/stats/day" ng-show="order == numQuestions" ng-click="addResponse(response)">
      Done
     </a>
 

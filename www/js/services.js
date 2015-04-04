@@ -1,6 +1,69 @@
 angular.module('memote.services', [])
 
-.factory('Questions', function($http) {
+// .factory('Dayta', function($http) {
+//   return {
+//     create : function() {
+//       $http.post('http://localhost:3000/api/dayta', $)
+//     }
+
+//   }
+// })
+
+.factory('MoodRating', function() {
+  var moodRating = 75;
+
+  return {
+    get : function() {
+      return moodRating;
+    },
+    set : function(rating) {
+      moodRating = rating;
+    }
+  };
+})
+
+.factory('Responses', function() {
+  var responses = {};
+
+  return {
+    get : function() {
+      return responses;
+    },
+    add : function(question, response) {
+      responses[question] = response;
+    }
+  };
+})
+
+
+.factory('Dayta', function($http) {
+  return {
+    get : function() {
+      $http.get('http://localhost:3000/api/daytas')
+        .success(function(data) {
+          console.log('data', data);
+        })
+        .error(function(data) {
+          console.log('Error: ' + data);
+        });
+    },
+    add : function(mood, responses) {
+      $http.post('http://localhost:3000/api/dayta', 
+      {
+        mood: mood,
+        responses: responses
+      })
+      .success(function(data, status, headers, config) {
+
+      })
+      .error(function(data, status, headers, config) {
+      });
+    }
+
+  };
+})
+
+.factory('Questions', function() {
   var questions = {
 
     1: {

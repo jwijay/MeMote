@@ -1,39 +1,39 @@
 angular.module('memote.controllers', [])
 
-.controller('MoodCtrl', function($scope) {
-  $scope.moodRating = 70;
+.controller('MoodCtrl', function($scope, MoodRating) {
+  $scope.moodRating = MoodRating.get();
+
+  $scope.changeMoodRating = function(moodRating) {
+    MoodRating.set(moodRating);
+  };
 })
 
-.controller('QCtrl', function($scope, $stateParams, Questions) {
-
+.controller('QCtrl', function($scope, $stateParams, Questions, Responses, MoodRating, Dayta) {
   $scope.order = $stateParams.order;
-
   $scope.questions = Questions.all();
-
-  $scope.question = Questions.all()[$stateParams.order.toString()];
-  
+  $scope.question = $scope.questions[$stateParams.order.toString()];
   $scope.numQuestions = Object.keys($scope.questions).length;
 
   if ($scope.order < $scope.numQuestions) {
     $scope.next_q = (parseInt($stateParams.order) + 1).toString();
   } else {
-    $scope.next_q = $scope.order;
-    //TODO: submit yar junks now
+    $scope.next_q = null;
   }
 
-  // parseInt, toString. I want to load the question based on the param (use a service to get the question from the database?
-    // load question for each q:order substate
-    // post to db, insert key-value in dayta.responses (after each question)
+  $scope.addResponse = function(response) {
+    Responses.add($scope.question.title, response);
 
-  // at first, order is ""
-  // if order is "", order = 0
-  // next_q = order++, unless order++ is > questions.length
-  
-  // on template, if next_q not null,
-  // show next button with ui-sref today.q({order: next_q})
+    if ($scope.next_q === null) {
+      // make http request (to POST to db)
+      Dayta.add(MoodRating.get()/10, Responses.get());
+    }
+  };
 })
 
-.controller('DayCtrl', function($scope) {})
+.controller('DayCtrl', function($scope, MoodRating, Responses) {
+  console.log('Responses.get()',Responses.get());
+  console.log('MoodRating.get()',MoodRating.get());
+})
 
 .controller('WeekCtrl', function($scope, Chats) {
   $scope.chats = Chats.all();

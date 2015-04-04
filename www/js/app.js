@@ -62,35 +62,35 @@ angular.module('memote', ['ionic', 'memote.controllers', 'memote.services'])
         controller: 'DayCtrl'
       }
     }
-  })
+  // })
 
-  .state('stats.week', {
-      url: '/week',
-      views: {
-        'stats-week': {
-          templateUrl: 'templates/stats-week.html',
-          controller: 'WeekCtrl'
-        }
-      }
-    })
-    .state('stats.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'stats-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
+  // .state('stats.week', {
+  //     url: '/week',
+  //     views: {
+  //       'stats-week': {
+  //         templateUrl: 'templates/stats-week.html',
+  //         controller: 'WeekCtrl'
+  //       }
+  //     }
+  //   })
+  //   .state('stats.chat-detail', {
+  //     url: '/chats/:chatId',
+  //     views: {
+  //       'stats-chats': {
+  //         templateUrl: 'templates/chat-detail.html',
+  //         controller: 'ChatDetailCtrl'
+  //       }
+  //     }
+  //   })
 
-  .state('stats.month', {
-    url: '/month',
-    views: {
-      'stats-month': {
-        templateUrl: 'templates/stats-month.html',
-        controller: 'MonthCtrl'
-      }
-    }
+  // .state('stats.month', {
+  //   url: '/month',
+  //   views: {
+  //     'stats-month': {
+  //       templateUrl: 'templates/stats-month.html',
+  //       controller: 'MonthCtrl'
+  //     }
+  //   }
   });
 
   // if none of the above states are matched, use this as the fallback
