@@ -37,15 +37,11 @@ angular.module('memote.services', [])
 
 
 .factory('Dayta', function($http) {
+  var daytas = [];
+
   return {
     get : function() {
-      $http.get('http://localhost:3000/api/daytas')
-        .success(function(data) {
-          console.log('data', data);
-        })
-        .error(function(data) {
-          console.log('Error: ' + data);
-        });
+      return $http.get('http://localhost:3000/api/dayta');
     },
     add : function(mood, responses) {
       $http.post('http://localhost:3000/api/dayta', 

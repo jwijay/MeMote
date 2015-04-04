@@ -1,4 +1,4 @@
-<ion-view view-title="Stats">
+<ion-view view-title="MeMote">
   <ion-content class="padding">
     <div class="list card">
       <div class="item item-divider">Mood</div>
@@ -8,19 +8,13 @@
         </div>
       </div>
     </div>
-    <div class="list card">
-      <div class="item item-divider">Question</div>
+    <div class="list card" ng-repeat="question in questions">
+      <div class="item item-divider">{{question.title}}</div>
       <div class="item item-body">
         <div>
-          You ate an apple today!
-        </div>
-      </div>
-    </div>
-    <div class="list card">
-      <div class="item item-divider">Upcoming</div>
-      <div class="item item-body">
-        <div>
-          You have <b>29</b> meetings on your calendar tomorrow.
+          <p ng-repeat="dayta in daytas">
+            {{dayta}}
+          </p>
         </div>
       </div>
     </div>

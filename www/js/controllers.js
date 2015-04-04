@@ -30,9 +30,13 @@ angular.module('memote.controllers', [])
   };
 })
 
-.controller('DayCtrl', function($scope, MoodRating, Responses) {
-  console.log('Responses.get()',Responses.get());
-  console.log('MoodRating.get()',MoodRating.get());
+.controller('DayCtrl', function($scope, Questions, MoodRating, Responses, Dayta) {
+  $scope.questions = Questions.all();
+
+  Dayta.get().success(function(data) {
+    $scope.daytas = data;
+    console.log('$scope.daytas',$scope.daytas);
+  });
 })
 
 .controller('WeekCtrl', function($scope, Chats) {
