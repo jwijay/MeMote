@@ -34,35 +34,17 @@ angular.module('memote.controllers', [])
   $scope.questions = Questions.all();
 
   // converting date for labels
-  var dateConverter = function(isoDate) {
+  var dateConverter = $scope.dateConverter = function(isoDate) {
       var date = new Date(isoDate);
       return (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
   };
-
-  Dayta.get().success(function(data) {
-    $scope.daytas = data;
-    console.log('$scope.daytas',$scope.daytas);
-    $scope.moodRatings = $scope.daytas.map(function(dayta) {
-      return dayta.mood;
-    });
-    $scope.dates = $scope.daytas.map(function(dayta) {
-      return dateConverter(dayta.date);
-    });
-
-    console.log('$scope.moodRatings',$scope.moodRatings);
-    // console.log('$scope.dates',$scope.dates);
-
-  });
-
 
   // adding mood chart
   var ctx = $('#moodChart').get(0).getContext('2d');
 
   // sample data
-  var data = {
-      // labels: ["January", "February", "March", "April", "May", "June", "July"],
-      labels: ["3/31/2015", "4/1/2015", "4/2/2015", "4/3/2015", "4/4/2015", "4/5/2015", "4/6/2015"],
-      // labels: $scope.dates,
+  var moodChartData = {
+      labels: $scope.dates,
       datasets: [
           // {
           //     label: "My First dataset",
@@ -82,45 +64,25 @@ angular.module('memote.controllers', [])
               pointStrokeColor: "#fff",
               pointHighlightFill: "#fff",
               pointHighlightStroke: "rgba(151,187,205,1)",
-              data: [2, 5.6, 6.6, 7.5, 3, 10, 9.8]
-              // data: [20, 56, 66, 75, 30, 100, 98]
-              // data: [28, 48, 40, 19, 86, 27, 90]
+              data: $scope.dates
           }
       ]
   };
 
-  var moodChart = new Chart(ctx).Line(data);
+  Dayta.get().success(function(apiData) {
+    $scope.daytas = apiData;
+    $scope.moodRatings = $scope.daytas.map(function(dayta) {
+      return dayta.mood;
+    });
+    $scope.dates = $scope.daytas.map(function(dayta) {
+      return dateConverter(dayta.date);
+      
+    });
+    moodChartData.datasets[0].data = $scope.moodRatings;
+    moodChartData.labels = $scope.dates;
+    var moodChart = new Chart(ctx).Line(moodChartData);
+  });
 
-
-
-
-  $scope.MoodChart = {
-    width : 500,
-    height: 500,
-    options : {},
-    data : [
-      {
-        value: 30,
-        color:"#F7464A"
-      },
-      {
-        value : 50,
-        color : "#E2EAE9"
-      },
-      {
-        value : 100,
-        color : "#D4CCC5"
-      },
-      {
-        value : 40,
-        color : "#949FB1"
-      },
-      {
-        value : 120,
-        color : "#4D5360"
-      }
-    ]
-  };
 })
 
 .controller('WeekCtrl', function($scope, Chats) {
