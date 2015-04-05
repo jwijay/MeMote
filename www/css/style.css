@@ -11,3 +11,30 @@
   -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
 }*/
+
+@import url(http://fonts.googleapis.com/css?family=Cabin:400,700,400italic,700italic);
+
+span {
+  font-family: 'Cabin', sans-serif;
+  letter-spacing: .02em;
+}
+
+body, span, textarea {
+  font-family: 'Cabin', sans-serif;
+  letter-spacing: .02em;
+}
+
+div.item.item-divider, button.button.back-button.buttons.button-clear.header-item {
+  /*text-transform: uppercase;*/
+  font-weight: 700;
+}
+
+div.item.item-body p {
+  margin-top: 0;
+}
+
+div.title.title-center {
+  /*text-transform: uppercase;*/
+  font-weight: 700;
+  font-size: 24px;
+}
